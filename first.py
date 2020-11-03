@@ -25,7 +25,7 @@ def deleteEntry(event):
     blogConfig.append("---")
     blogConfig.append("# "+TitleFild.get())
     #print(blogConfig)
-    if(os.path.isdir(./templates)):
+    if(os.path.isdir("./templates")):
         #ここに、このディレクトリーにテンプレートを作るかの確認をする。
         os.mkdir("./templates")
     new_dir_path="./templates/"+datememo
