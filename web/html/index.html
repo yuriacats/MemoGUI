@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script type="text/javascript" src="/eel.js"></script>
+  <script type="text/javascript">
+    eel.expose(say_hello_js);
+    function say_hello_js(x){
+      console.log("hello from"+ x);
+    }
+    say_hello_js("javascript World");
+    eel.say_hello_py("javascript World");
+    </script>
+  <title></title>
+</head>
+<body>
+  <section id="form">
+    <label for="title">表題</label>
+    <input type="text" name="title">
+    <label for="date">投稿日</label>
+    <input type="text" name="date">
+  </section>
+</body>
+</html>

@@ -3,49 +3,17 @@
 #-*- coding:utf-8 -*-
 
 import os
-import os
 import sys
 import tkinter as tk
 import tkinter.messagebox as tkm
 import datetime
 import tkinter.filedialog
+import makeFiles
 
 
 root= tk.Tk()
 
 # ----------Code Start-----------
-
-# ===========def: s=============
-def deleteEntry(event):
-    datememo=DateFild.get()
-    blogConfig=[]
-    blogConfig.append("---")
-    blogConfig.append("title: "+TitleFild.get())
-    blogConfig.append("date: "+datememo)
-    blogConfig.append("---")
-    blogConfig.append("# "+TitleFild.get())
-    #print(blogConfig)
-    if(os.path.isdir(./templates)):
-        #ここに、このディレクトリーにテンプレートを作るかの確認をする。
-        os.mkdir("./templates")
-    new_dir_path="./templates/"+datememo
-    if(os.path.isdir(new_dir_path)):
-        files=os.listdir(path='./templates/')
-        todayblogs=[]
-        for i in files:
-            if(i[:10]==datememo):
-                todayblogs.append(i)
-        newNum=len(todayblogs)+1
-        new_dir_path=new_dir_path+"-"+str(newNum)
-
-    os.mkdir(new_dir_path)
-    print(new_dir_path)
-    new_path=new_dir_path+"/index.md"
-
-    with open(new_path,mode='w')as f:
-        f.write('\n'.join(blogConfig))
-    TitleFild.delete(0,tk.END)
-    tkm.showinfo('info',"テンプレート生成が完了しました。")
 
 def showMesseage(text):
     tkm.showinfo('info',text)
@@ -83,7 +51,7 @@ ImageFildButton.pack()
 
 
 TitleFildButton = tk.Button(text=u'送信')
-TitleFildButton.bind("<Button-1>",deleteEntry)
+TitleFildButton.bind("<Button-1>",mekeFiles.deleteEntry)
 TitleFildButton.pack()
 
 # LambdaButton = tk.Button(text=u'messagebox',command=lambda: showMesseage(DateFild.get()))

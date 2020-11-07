@@ -2,3 +2,6 @@
 .idea
 *.swp
 templates/
+logs
+node_modules/
+package-lock.json
