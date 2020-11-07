@@ -1,4 +1,5 @@
 import eel
+import makeFiles
 
 eel.init('web', allowed_extensions=['.js', '.html'])
 @eel.expose
