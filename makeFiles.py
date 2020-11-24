@@ -1,6 +1,6 @@
 import os
 import sys
-
+import datetime
 
 # ===========def: s=============
 def deleteEntry(event):
@@ -33,5 +33,10 @@ def deleteEntry(event):
         f.write('\n'.join(blogConfig))
     TitleFild.delete(0,tk.END)
     tkm.showinfo('info',"テンプレート生成が完了しました。")
+
+def Timer():
+    nowtime=str(datetime.datetime.now())
+    now_date, now_time = nowtime.split()
+    return now_date
 
 

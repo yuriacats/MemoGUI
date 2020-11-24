@@ -2,24 +2,39 @@
 <html lang="en">
 <head>
   <script type="text/javascript" src="/eel.js"></script>
-  <script type="text/javascript">
-    eel.expose(say_hello_js);
-    function say_hello_js(x){
-      console.log("hello from"+ x);
-    }
-    say_hello_js("javascript World");
-    eel.say_hello_py("javascript World");
-    </script>
+  <script type="text/javascript" src="../js/script.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+  <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
   <title></title>
 </head>
 <body>
-  <section id="form">
+  <form name="form1">
     <label for="title">表題</label>
     <input type="text" name="title"/>
     <label for="date">投稿日</label>
     <input type="text" name="date"/>
-    <label for="markdodn">投稿内容</label>
-    <textarea name="markdodn"></textarea>
-  </section>
+    <label for="images">サムネイル</label>
+    <input type="text" name="images"/>
+    <textarea name="markdodn" id="markdown"></textarea>
+  </form>
+  <button onClick="output_templates()" > 確認 </button>
 </body>
+  <script type="text/javascript">
+    //https://simplemde.com/
+    //上使用フレームワーク
+    var simplemde = new SimpleMDE({element:document.getElementById("markdown")});
+    eel.expose(say_hello_js);
+    function say_hello_js(x){
+      console.log("hello from"+ x);
+    }
+    //say_hello_js("javascript World");
+    //eel.say_hello_py("javascript World");
+    async function run(){
+      now_date= await eel.Timer()();
+      console.log(now_date);
+      document.form1.elements[1].value = now_date;
+    }
+    run();
+    </script>
+
 </html>
