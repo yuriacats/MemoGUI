@@ -1,5 +1,4 @@
-from zipfile import Path
-
+#from zipfile import Path
 import eel
 import os
 from tkinter import filedialog, Tk
@@ -28,7 +27,7 @@ def select_file():
     root.update()
     if system == "Windows":
         root.withdraw()
-    path = Path(path_str)
+    #path = Path(path_str)
     print(os.access(path_str, os.W_OK))
     return path_str
 
@@ -54,9 +53,9 @@ def outputTemplates(title,date,markdown):
 
     base_dir_path= select_file()
 
-    new_dir_path=base_dir_path+"templates/"+date
+    new_dir_path=base_dir_path+"/"+date
     if(os.path.isdir(new_dir_path)):
-        files=os.listdir(path=base_dir_path+"templates/")
+        files=os.listdir(path=base_dir_path+"/")
         todayblogs=[]
         for i in files:
             if(i[:10]==date):
