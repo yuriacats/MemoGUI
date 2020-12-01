@@ -1,16 +1,35 @@
-import eel
-import makeFiles
-import os
-import io
-import datetime
+from zipfile import Path
 
+import eel
+import os
+from tkinter import filedialog , Tk
+import datetime
+import platform
 eel.init('web', allowed_extensions=['.js', '.html'])
 @eel.expose
 def sey_hello_py(x):
     print('Hello form %s' %x)
 
+root = Tk()
+root.geometry("0x0")
+root.overrideredirect(1)
+root.withdraw()
+system = platform.system()
 
 @eel.expose
+def select_file():
+    if system == "Windows":
+        root.deiconify()
+    root.update()
+    root.lift()
+    root.focus_force()
+    path_str = filedialog.askdirectory()
+    root.update()
+    if system == "Windows":
+        root.withdraw()
+    path = Path(path_str)
+    return path.absolute()
+
 def Timer():
     nowtime=str(datetime.datetime.now())
     now_date, now_time = nowtime.split()
@@ -29,7 +48,7 @@ def outputTemplates(title,date,markdown):
     blogConfig.append(markdown)
     #print(blogConfig)
         #ここに、このディレクトリーにテンプレートを作るかの確認をする。
-    base_dir_path="/Users/tsuchitahika/project/MemoGUI/"
+    base_dir_path= select_file()
     new_dir_path=base_dir_path+"templates/"+date
     if(os.path.isdir(new_dir_path)):
         files=os.listdir(path=base_dir_path+"templates/")
