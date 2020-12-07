@@ -1,13 +1,13 @@
     function output_templates(){
-      let getform= document.forms[0]
+      let getform= document.forms[0];
       //console.log(getform.elements[0].value==0);
-      getform.elements[0].value==0 ? console.log("入力項目が足りません"):make_templates(getform);
+      getform.elements[0].value == 0 ? console.log("入力項目が足りません"):make_templates(getform);
     }
 
     function make_templates(args){
-      console.log(args.elements[0].value);
-      console.log(args.elements[1].value);
-      console.log(simplemde.value());
+      //console.log(args.elements[0].value);
+      //console.log(args.elements[1].value);
+      //console.log(simplemde.value());
       make_templates_py(args);
     }
 async function make_templates_py(args){
@@ -15,3 +15,24 @@ async function make_templates_py(args){
         //console.log(await eel.outputTemplates(args.elements[0].value,args.elements[1].value));
         args.elements[0].value="";
       }
+
+      function meke_memo(){
+        let getform=document.forms[1];
+        console.log(getform.elements[0].value);
+        console.log(getform.elements[1].value);
+        make_memo_py(getform);
+      }
+async function make_memo_py(args){
+    let logs= await eel.input_memos(args.elements[0].value,args.elements[1].value )();
+    console.log(logs);
+    args.elements[0].value="";
+    args.elements[1].value="";
+}
+function chatch_memo(args) {
+    wite_memo(title[i], text[i])
+    //ここでメモを受け取ってWite_memoに引き渡す。
+}
+function wite_memo(title,text){
+    //それぞれにTenplateタグに挿入する。
+
+}

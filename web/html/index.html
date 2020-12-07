@@ -1,28 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <script type="text/javascript" src="/eel.js"></script>
   <script type="text/javascript" src="../js/script.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+  <link rel="stylesheet" href="../css/style.css">
   <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
   <title></title>
 </head>
 <body>
   <form name="form1">
     <label for="title">表題</label>
-    <input type="text" name="title"/>
-    <label for="date">投稿日</label>
-    <input type="text" name="date"/>
-    <label for="images">サムネイル</label>
-    <input type="text" name="images"/>
+    <input type="text" name="title" id="title"/>
+    <label for="post_date">投稿日</label>
+    <input type="text" name="date" id="post_date"/>
+    <label for="thamnail">サムネイル</label>
+    <input type="text" name="images" id="thamnail"/>
     <textarea name="markdodn" id="markdown"></textarea>
   </form>
   <button onClick="output_templates()" > 確認 </button>
+  <div class="contentBox">
+    <form name="memo-form" class="content">
+      <input type="text" name="memo-title" class="memo-title" />
+      <textarea name="memo" class="memo-text"></textarea>
+    </form>
+    <button onClick="meke_memo()">メモの登録</button>
+  </div>
+
+<template>
+  <div class="memo-content content">
+    <p class="memo-title"></p>
+    <p class="memo-text"></p>
+  </div>
+</template>
 </body>
   <script type="text/javascript">
     //https://simplemde.com/
     //上使用フレームワーク
-    var simplemde = new SimpleMDE({element:document.getElementById("markdown")});
+    var simplemde = new SimpleMDE({
+      spellChecker: false,
+      element:document.getElementById("markdown")
+    });
     eel.expose(say_hello_js);
     function say_hello_js(x){
       console.log("hello from"+ x);
@@ -30,7 +48,9 @@
     //say_hello_js("javascript World");
     //eel.say_hello_py("javascript World");
     async function run(){
-      now_date= await eel.Timer()();
+      now_date= await eel.edit_date()();
+      now_memo= await eel.memo_reload()();
+      console.log(now_memo);
       console.log(now_date);
       document.form1.elements[1].value = now_date;
     }

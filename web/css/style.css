@@ -1,0 +1,16 @@
+.content{
+    display:inline-block;
+    background-color:blanchedalmond;
+    width:350px;
+}
+.contentBox{
+    display: flex;
+}
+.memo-text{
+    height: 100px;
+    width:300px;
+    margin:10px;
+}
+.memo-title{
+    margin:10px;
+}
