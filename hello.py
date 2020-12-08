@@ -88,10 +88,7 @@ def input_memos(memo_title, memo_text):
     ) """)
     conn.execute("INSERT INTO items (name, memo_text) VALUES (?,?)", (memo_title, memo_text))
     conn.close()
-
-
-    # memoReload()
-    return memo_reload()
+    return 0
 
 
 @eel.expose

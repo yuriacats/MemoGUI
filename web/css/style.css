@@ -6,11 +6,23 @@
 .contentBox{
     display: flex;
 }
-.memo-text{
+.edit-memo-text{
     height: 100px;
     width:300px;
     margin:10px;
 }
-.memo-title{
+.edit-memo-title{
     margin:10px;
+}
+#memo_container{
+    margin:20px auto;
+    display: flex;
+    overflow-x:scroll;
+    width:80vw;
+}
+.memo-content{
+    margin:0 10px;
+}
+.memo-text{
+    width:200px;
 }

@@ -21,13 +21,16 @@
   <button onClick="output_templates()" > 確認 </button>
   <div class="contentBox">
     <form name="memo-form" class="content">
-      <input type="text" name="memo-title" class="memo-title" />
-      <textarea name="memo" class="memo-text"></textarea>
+      <input type="text" name="memo-title" class="edit-memo-title" />
+      <textarea name="memo" class="edit-memo-text"></textarea>
     </form>
     <button onClick="meke_memo()">メモの登録</button>
-  </div>
+    </div>
+    <div id="memo_container">
+    </div>
 
-<template>
+
+<template id="memo_template">
   <div class="memo-content content">
     <p class="memo-title"></p>
     <p class="memo-text"></p>
@@ -48,9 +51,8 @@
     //say_hello_js("javascript World");
     //eel.say_hello_py("javascript World");
     async function run(){
-      now_date= await eel.edit_date()();
-      now_memo= await eel.memo_reload()();
-      console.log(now_memo);
+      let now_date = await eel.edit_date()();
+      output_memos()
       console.log(now_date);
       document.form1.elements[1].value = now_date;
     }
